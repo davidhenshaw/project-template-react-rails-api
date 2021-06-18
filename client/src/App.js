@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import SignupForm from './components/SignupForm';
 
 function App() {
+  return <SignupForm />
+}
+
+function ReactPlaceholder()
+{
   return (
     <div className="App">
       <header className="App-header">
