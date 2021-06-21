@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create!(name: params[:username], funds: params[:funds])
+        user = User.create!(username: params[:username], funds: params[:funds])
         render json: user, status: :created
 
     rescue ActiveRecord::RecordInvalid => invalid 

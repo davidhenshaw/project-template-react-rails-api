@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
-user1 = User.create(name: "Celeste", funds: 100000)
+user1 = User.create(username: "Celeste", funds: 100000)
