@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Redirect} from "react-router-dom";
 
 let baseURL = "http://localhost:4000";
 
@@ -11,6 +12,7 @@ class LoginForm extends React.Component
         this.state = {
             username: "",
             password: "",
+            loggedIn: false
         }
     }
 
@@ -23,11 +25,14 @@ class LoginForm extends React.Component
 
     handleSubmit = (event) => {
         event.preventDefault();
-
         axios.post(baseURL + '/login', this.state)
           .then((response) => {
+            let user = response.data
             this.clearForm();
-          }, (error) => {
+            this.props.onLogin(user)
+            this.setState({loggedIn: true});
+          }, 
+          (error) => {
             console.log(error);
           });
     }
@@ -39,7 +44,13 @@ class LoginForm extends React.Component
     }
 
     render(){
+        if(this.state.loggedIn)
+        {
+            return <Redirect to="/" />
+        }
+        else
         return <div className="form">
+            <h3>Welcome, Guest!</h3>
             <h2>Log In</h2>
             <form onSubmit={this.handleSubmit}>
                 <label>
