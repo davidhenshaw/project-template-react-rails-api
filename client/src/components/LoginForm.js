@@ -14,12 +14,19 @@ class LoginForm extends React.Component
         }
     }
 
+    clearForm = () => {
+        this.setState({
+            username: "",
+            password: "",
+        })
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
 
         axios.post(baseURL + '/login', this.state)
           .then((response) => {
-            console.log(response);
+            this.clearForm();
           }, (error) => {
             console.log(error);
           });
@@ -33,7 +40,7 @@ class LoginForm extends React.Component
 
     render(){
         return <div className="form">
-            <h2>Sign Up!</h2>
+            <h2>Log In</h2>
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Username:

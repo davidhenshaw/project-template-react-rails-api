@@ -15,12 +15,21 @@ class SignupForm extends React.Component
         }
     }
 
+    clearForm = () => {
+        this.setState({
+            username: "",
+            password: "",
+            funds: 0
+        })
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
 
+
         axios.post(baseURL + '/users', this.state)
           .then((response) => {
-            console.log(response);
+            this.clearForm();
           }, (error) => {
             console.log(error);
           });

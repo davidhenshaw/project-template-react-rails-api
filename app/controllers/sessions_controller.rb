@@ -5,4 +5,9 @@ class SessionsController < ApplicationController
 
         render json: user
     end
+
+    def destroy
+        session[:user_id] = nil
+        head :no_content
+    end
 end
