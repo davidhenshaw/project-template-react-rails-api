@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import StartupContainer from './components/StartupContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import axios from 'axios';
@@ -10,15 +11,18 @@ import {
   Route,
   Link,
   Redirect,
-  useHistory
+  // useHistory
+
 } from "react-router-dom";
 
 let baseURL = "http://localhost:4000";
 
 function App() {
+  // hooks 
   const [user, setUser] = useState(null);
-  let history = useHistory();
+  // let history = useHistory();
 
+  // useEffect runs code 1x
   useEffect(() => {
     axios.get("/me").then((response) => {
       if (response.status == 200) {
@@ -71,6 +75,7 @@ function App() {
             <User onLogout={handleLogout} user={user} />
           </Route>
         </Switch>
+        <StartupContainer startup={} />
       </div>
     </Router>
     );
