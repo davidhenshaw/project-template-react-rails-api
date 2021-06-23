@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_200941) do
 
   create_table "startups", force: :cascade do |t|
     t.integer "category_id"
+    t.string "name"
     t.integer "goal"
     t.integer "amount_funded"
     t.datetime "created_at", precision: 6, null: false

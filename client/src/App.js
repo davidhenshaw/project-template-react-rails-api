@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import StartupContainer from './components/StartupContainer';
+import StartupContainer from './containers/StartupContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import { Navbar } from './components/common';
