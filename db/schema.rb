@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_200941) do
 
   create_table "pledges", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "statup_id"
+    t.integer "startup_id"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
