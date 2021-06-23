@@ -8,8 +8,6 @@ function Navbar () {
     <section className="navbar">
       <a href="/" className="navbar-item">Home</a>
       <a href="/me" className="navbar-item">Profile</a>
-      <a href="/signup" className="navbar-item">Sign Up!</a>
-      <a href="/login" className="navbar-item">Login</a>
   </section>
   )
 

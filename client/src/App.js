@@ -67,22 +67,12 @@ function App() {
   function handleLogin(user){
     setUser(user);
   }
-  
+  if (!user) return <LoginForm onLogin={setUser} />;
   return (
   <Router>
       <div className="App">
       <Header />
-      {/* <Navbar /> */}
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign up</Link>
-            </li>
-          </ul>
-        </nav> */}
+      
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -90,9 +80,9 @@ function App() {
           <Route path="/signup">
             <SignupForm />
           </Route>
-          <Route path="/login">
-            <LoginForm onLogin={handleLogin} />
-          </Route>
+          {/* <Route path="/login"> */}
+            {/* <LoginForm onLogin={handleLogin} /> */}
+          {/* </Route> */}
           <Route path="/">
             <User onLogout={handleLogout} user={user} />
           </Route>
