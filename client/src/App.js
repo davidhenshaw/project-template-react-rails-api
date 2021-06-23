@@ -82,7 +82,7 @@ function App() {
 
           <Route 
             path="/startup/:id" 
-            children={<StartupPage />} 
+            children={<StartupPage user={user} />} 
           />
 
           <Route path="/">

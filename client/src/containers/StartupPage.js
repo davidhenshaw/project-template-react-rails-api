@@ -39,7 +39,7 @@ function StartupPage(props)
             <div className="startup-info">
                 <h3>Funding Goal: <p>{currencyUS.format(startup.goal)}</p></h3>
                 <h3>Amount Funded: <p>{currencyUS.format(startup.amount_funded)}</p></h3>
-                <PledgeForm user={props.user} id={id}/>
+                <PledgeForm user={props.user} startup_id={id}/>
             </div>
         </div>
     );
@@ -57,14 +57,13 @@ function StartupPage(props)
 
         let pledge = {
             user_id: props.user.id,
-            startup_id: props.id,
+            startup_id: props.startup_id,
             amount: amount
         }
 
         axios.post(`/pledges`, pledge)
         .then( console.log )
     }
-
 
     return(
         <form onSubmit={(e) => submitPledge(e)}>

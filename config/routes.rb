@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :create, :destroy]
 
   resources :startups, only: [:index, :show]
-  
+
+  resources :pledges, only: [:index, :create]
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"
