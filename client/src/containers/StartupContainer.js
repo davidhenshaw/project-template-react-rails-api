@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StartupCard from './StartupCard';
+import StartupCard from '../components/StartupCard';
 // import './StartupCard.css';
 
 class StartupContainer extends Component {
