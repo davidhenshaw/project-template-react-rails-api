@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-    has_many: :startups
+    has_many :startups
 end

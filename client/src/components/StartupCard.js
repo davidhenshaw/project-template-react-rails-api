@@ -21,9 +21,9 @@ class StartupCard extends Component {
       <div className="card-body">
         <p><span style={{fontWeight: "bold"}}>Name: </span> {this.props.startup.name} </p>
         {/* be able to sort by category */}
-        <p><span style={{fontWeight: "bold"}}>Category: </span>{this.props.startup.category} </p>
+        <p><span style={{fontWeight: "bold"}}>Category: </span>{this.props.startup.category.name} </p>
         {/* be able to sort */}
-        <p><span style={{fontWeight: "bold"}}>Funding Goal: </span> {this.props.startup.funding_goal}  </p>
+        <p><span style={{fontWeight: "bold"}}>Funding Goal: </span> {this.props.startup.goal}  </p>
       </div>
       <div className="btnn" >
                     {/* the below code line 45 relies on a pledge form */}

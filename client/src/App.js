@@ -3,6 +3,10 @@ import './App.css';
 import StartupContainer from './components/StartupContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
+import { Navbar } from './components/common';
+import { Header } from './components/common';
+
+
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import {
@@ -20,6 +24,8 @@ let baseURL = "http://localhost:4000";
 function App() {
   // hooks 
   const [user, setUser] = useState(null);
+  const [startups, setStartups] = useState([]);
+
   // let history = useHistory();
 
   // useEffect runs code 1x
@@ -36,6 +42,20 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    axios.get("/startups").then((response) => {
+      if (response.status == 200) {
+        setStartups(response.data);
+      }
+      else
+      {
+        console.log(response);
+        setStartups([]);
+      }
+    });
+  }, []);
+
+
   function handleLogout()
   {
     axios.delete("/logout")
@@ -51,7 +71,9 @@ function App() {
   return (
   <Router>
       <div className="App">
-        <nav>
+      <Header />
+      {/* <Navbar /> */}
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -60,7 +82,7 @@ function App() {
               <Link to="/signup">Sign up</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -75,7 +97,12 @@ function App() {
             <User onLogout={handleLogout} user={user} />
           </Route>
         </Switch>
-        <StartupContainer startup={} />
+        {/* <Route path="/Startup"> */}
+        <StartupContainer startups={startups} />
+        {/* to add to your favorites (funded) list this.state.addPledged */}
+        {/* </Route> */}
+        
+    
       </div>
     </Router>
     );

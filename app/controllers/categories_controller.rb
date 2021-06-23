@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
+    
     def show
-        user = Categories.find(params[:id])
+        category = Categories.find(params[:id])
     end
 end

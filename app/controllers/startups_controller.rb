@@ -1,7 +1,7 @@
 class StartupsController < ApplicationController
 
     def index
-    render json: Startups.all
+        render json: Startup.all, include: :category
     end
 end
 

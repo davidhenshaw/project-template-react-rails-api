@@ -23,18 +23,14 @@ ActiveRecord::Schema.define(version: 2021_06_17_200941) do
 
   create_table "pledges", force: :cascade do |t|
     t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
+    t.integer "user_id"
+    t.integer "startup_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "startups", force: :cascade do |t|
+    t.integer "category_id"
     t.string "name"
     t.integer "goal"
     t.integer "amount_funded"
