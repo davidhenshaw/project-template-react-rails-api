@@ -2,27 +2,41 @@ import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
+//Converts the numbers representing money to have dollar signs, commas, and decimal points
 let currencyUS = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
 
 function StartupPage(props)
 {
     const [startup, setStartup] = useState(null);
+    const [funding, setFunding] = useState(0);
     let { id } = useParams();
-
-    //Converts the numbers representing money to have dollar signs, commas, and decimal points
-
 
     useEffect( () => {
             axios.get(`/startups/${id}`)
             .then( (res) => {
-                if(res.statusText == "OK")
-                    setStartup(res.data)
+                if(res.statusText == "OK"){
+                    setStartup(res.data);
+                    setFunding(sumPledges(res.data));
+                }
                 else
-                    console.log(res.data)
+                {
+                    console.log(res.data);
+                }
             })
         } 
         , []);
+        
+    function sumPledges(startup)
+    {
+        let sum = 0;
+        if(startup)
+        {
+            let amounts = startup.pledges.map( (pledge) => { return pledge.amount});
+            sum = amounts.reduce( (a, b) => a + b, 0);
+        }
 
+        return sum;
+    }
 
     if(!startup)
     {
@@ -38,7 +52,7 @@ function StartupPage(props)
             </div>
             <div className="startup-info">
                 <h3>Funding Goal: <p>{currencyUS.format(startup.goal)}</p></h3>
-                <h3>Amount Funded: <p>{currencyUS.format(startup.amount_funded)}</p></h3>
+                <h3>Amount Funded: <p>{currencyUS.format(funding)}</p></h3>
                 <PledgeForm user={props.user} startup_id={id}/>
             </div>
         </div>

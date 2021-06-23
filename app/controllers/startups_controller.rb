@@ -6,8 +6,7 @@ class StartupsController < ApplicationController
 
     def show
         startup = Startup.find(params[:id])
-
-        render json: startup, include: :category
+        render json: startup, include: [:category, :pledges]
     end
 end
 
