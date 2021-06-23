@@ -75,16 +75,15 @@ function App() {
   <Router>
       <div className="App">
       <Header />
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/signup">
             <SignupForm />
           </Route>
-          {/* <Route path="/login"> */}
-            {/* <LoginForm onLogin={handleLogin} /> */}
-          {/* </Route> */}
-          <Route path="/startup/:id" children={<StartupPage />} />
+
+          <Route 
+            path="/startup/:id" 
+            children={<StartupPage />} 
+          />
 
           <Route path="/">
             <User onLogout={handleLogout} user={user} />

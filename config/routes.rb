@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index, :create, :destroy]
 
-  resources :startups, only: :index
+  resources :startups, only: [:index, :show]
+  
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"
