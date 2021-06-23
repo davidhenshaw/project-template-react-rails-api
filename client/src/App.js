@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import StartupContainer from './containers/StartupContainer';
+import StartupPage from './containers/StartupPage';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import { Navbar } from './components/common';
@@ -67,13 +68,13 @@ function App() {
   function handleLogin(user){
     setUser(user);
   }
+
   if (!user) return <LoginForm onLogin={setUser} />;
+
   return (
   <Router>
       <div className="App">
       <Header />
-      
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -83,16 +84,16 @@ function App() {
           {/* <Route path="/login"> */}
             {/* <LoginForm onLogin={handleLogin} /> */}
           {/* </Route> */}
+          <Route path="/startup/:id" children={<StartupPage />} />
+
           <Route path="/">
             <User onLogout={handleLogout} user={user} />
+            <StartupContainer startups={startups} />  
           </Route>
         </Switch>
         {/* <Route path="/Startup"> */}
-        <StartupContainer startups={startups} />
         {/* to add to your favorites (funded) list this.state.addPledged */}
         {/* </Route> */}
-        
-    
       </div>
     </Router>
     );
