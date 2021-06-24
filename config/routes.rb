@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :pledges, only:[:index, :show]
   end
 
-  resources :users, only: [:index, :create, :destroy]
+  resources :users, only: [:index, :create, :destroy, :update]
 
   resources :startups, only: [:index, :show]
 

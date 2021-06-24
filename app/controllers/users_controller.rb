@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
 
     def index
@@ -25,5 +26,16 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         user.destroy!
         head :no_content
+    end
+
+    def update
+        user = User.find(session[:user_id])
+        if user
+            newFunds = user.funds + params[:amount]
+            user.update(funds: newFunds)
+            render json: user, status: 200
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
     end
 end

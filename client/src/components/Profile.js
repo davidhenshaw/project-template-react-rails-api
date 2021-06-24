@@ -56,6 +56,35 @@ const Profile = (props) => {
                 <h3>Amount Pledged: {formatCurrency(sumPledges(pledges))}</h3>
             </div>
             <UserPledges user={user} startup={startup} />
+            <FundForm user={user}/>
+        </div>
+    )
+}
+
+const FundForm = (props) =>
+{
+    let { user } = props;
+    const [amount, setAmount] = useState(0);
+
+    function handleSubmit(event)
+    {
+        event.preventDefault();
+        let funds = {
+            amount: +amount
+        }
+        axios.patch(`/users/${user.id}`, funds)
+        .then( console.log )
+    }
+
+    return(
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Add Money To Account:
+                    <input type="number" value={amount} onChange={e => setAmount(e.target.value)}/>
+                </label>
+                <button>Submit</button>
+            </form>
         </div>
     )
 }
