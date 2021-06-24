@@ -37,7 +37,7 @@ function UserPledges(props)
           if(res.statusText == "OK"){
               let pledge_arr = res.data;
 
-              if(startup){
+              if(startup.name){
                 pledge_arr = res.data.filter( pledge => pledge.startup_id == startup.id);
               }
               setPledges(pledge_arr.reverse());
@@ -57,7 +57,8 @@ function UserPledges(props)
   return ( 
       <div>
           {
-              startup ? 
+              startup.name
+              ? 
               <PledgeForm user={user} startup_id={startup.id} onPledge={handleNewPledge}/>
               :
               null
