@@ -10,6 +10,7 @@ const Profile = (props) => {
     let { user } = props;
     let startup = {};
     const [pledges, setPledges] = useState([]);
+    const [userFunds, setUserFunds] = useState(user.funds);
 
     let contactInfo = {
         name: user.username,
@@ -24,6 +25,11 @@ const Profile = (props) => {
         sum = amounts.reduce( (a, b) => a + b, 0);
 
         return sum;
+    }
+
+    function handleFundsChange(funds)
+    {
+        setUserFunds(funds);
     }
 
     useEffect( () => {
@@ -43,37 +49,44 @@ const Profile = (props) => {
         })
     } 
     , []);
-  
-
 
     return (
         <div>
             <InvestorCard contact={contactInfo}/>
             <div>
                 <h2>Funding:</h2>
-                <h3>Total: {formatCurrency(user.funds)}</h3>
-                <h3>Available: {formatCurrency(user.funds - sumPledges(pledges))}</h3>
+                <h3>Total: {formatCurrency(userFunds)}</h3>
+                <h3>Available: {formatCurrency(userFunds - sumPledges(pledges))}</h3>
                 <h3>Amount Pledged: {formatCurrency(sumPledges(pledges))}</h3>
             </div>
             <UserPledges user={user} startup={startup} />
-            <FundForm user={user}/>
+            <FundForm user={user} onFundsChange={handleFundsChange}/>
         </div>
     )
 }
 
 const FundForm = (props) =>
 {
-    let { user } = props;
+    let { user, onFundsChange } = props;
     const [amount, setAmount] = useState(0);
 
     function handleSubmit(event)
     {
         event.preventDefault();
         let funds = {
-            amount: +amount
+            amount: +amount //coerce into being an integer
         }
         axios.patch(`/users/${user.id}`, funds)
-        .then( console.log )
+        .then( (res) => 
+        {
+            onFundsChange(res.data.funds) 
+            clearForm();
+        })
+    }
+
+    function clearForm()
+    {
+        setAmount(0);
     }
 
     return(

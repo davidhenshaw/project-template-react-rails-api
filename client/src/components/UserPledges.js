@@ -7,15 +7,16 @@ let currencyUS = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}
 
 function UserPledges(props)
 {
-    let { user, startup } = props;
+    let { user, startup, onPledgeChange } = props;
   const [pledges, setPledges] = useState([]);
 
-  function handleDelete(toDelete_id)
+  function handleDelete(pledge)
   {
-    axios.delete(`/pledges/${toDelete_id}`)
+    axios.delete(`/pledges/${pledge.id}`)
     .then( (res) => {
         //Find the pledge we want to delete
-        let removed = pledges.filter( (pledge) => pledge.id !== toDelete_id);
+        onPledgeChange(pledge.amount * -1)
+        let removed = pledges.filter( (arr_pledge) => arr_pledge.id !== pledge.id);
         setPledges(removed);
     });
 
@@ -28,6 +29,7 @@ function UserPledges(props)
     newList.unshift(pledge);
 
     setPledges(newList);
+    onPledgeChange(pledge.amount);
   }
 
   //This code block filters out pledges that don't match the startup_id
@@ -85,7 +87,16 @@ function PledgeForm(props)
         }
 
         axios.post(`/pledges`, pledge)
-        .then( res => onPledge(res.data) )
+        .then( res => 
+            {
+                onPledge(res.data);
+                clearForm();
+            } )
+    }
+
+    function clearForm()
+    {
+        setAmount(0);
     }
 
     return(
@@ -103,7 +114,7 @@ function Pledge(props)
     
     function handleDelete()
     {
-        onDelete(pledge.id);
+        onDelete(pledge);
     }
 
     return (

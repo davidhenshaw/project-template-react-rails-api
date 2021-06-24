@@ -39,6 +39,11 @@ function StartupPage(props)
         return sum;
     }
 
+    function handlePledgeChange(amount)
+    {
+        setFunding( funding + amount);
+    }
+
     if(!startup)
     {
         return <h1>Loading...</h1>
@@ -55,38 +60,11 @@ function StartupPage(props)
                 <h3>Funding Goal: <p>{currencyUS.format(startup.goal)}</p></h3>
                 <h3>Amount Funded: <p>{currencyUS.format(funding)}</p></h3>
                 {/* <PledgeForm user={props.user} startup_id={id}/> */}
-                <UserPledges user={props.user} startup={startup}/>
+                <UserPledges user={props.user} startup={startup} onPledgeChange={handlePledgeChange}/>
             </div>
         </div>
     );
     
-  }
-
-  function PledgeForm(props)
-  {
-    const [amount, setAmount] = useState(0);
-
-    function submitPledge(event)
-    {
-        event.preventDefault();
-
-        let pledge = {
-            user_id: props.user.id,
-            startup_id: props.startup_id,
-            amount: amount
-        }
-
-        axios.post(`/pledges`, pledge)
-        .then( console.log )
-    }
-
-    return(
-        <form onSubmit={(e) => submitPledge(e)}>
-            <label>Pledge Amount:</label>
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
-            <button>Make a Pledge!</button>
-        </form>
-    )
   }
 
   export default StartupPage;
