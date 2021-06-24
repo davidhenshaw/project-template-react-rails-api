@@ -30,13 +30,17 @@ function UserPledges(props)
     setPledges(newList);
   }
 
+  //This code block filters out pledges that don't match the startup_id
   useEffect( () => {
       axios.get(`/users/${user.id}/pledges`)
       .then( (res) => {
           if(res.statusText == "OK"){
               let pledge_arr = res.data;
-              pledge_arr.reverse();
-              setPledges(pledge_arr);
+
+              if(startup_id){
+                pledge_arr = res.data.filter( pledge => pledge.startup_id == props.startup_id);
+              }
+              setPledges(pledge_arr.reverse());
           }
           else
           {
@@ -45,7 +49,6 @@ function UserPledges(props)
       })
   } 
   , []);
-
 
   if(!pledges)
   {

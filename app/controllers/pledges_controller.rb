@@ -1,6 +1,10 @@
 class PledgesController < ApplicationController
     def index
-        render json: Pledge.all
+        if params[:user_id]
+            user = User.find(params[:user_id])
+            pledges = user.pledges
+        end
+        render json: pledges
     end
 
     def show
