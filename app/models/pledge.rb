@@ -14,7 +14,6 @@ class Pledge < ApplicationRecord
         #add the amount we're currently trying to pledge
         sum = amounts.sum + amount
 
-        binding.pry
         unless sum < user.funds 
             errors.add(:amount, "User has insufficient funds to make this pledge!")
         end
