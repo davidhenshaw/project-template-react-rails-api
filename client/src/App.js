@@ -20,6 +20,8 @@ import {
   // useHistory
 
 } from "react-router-dom";
+import InvestorCard from './components/InvestorCard';
+import UserPledges from './components/UserPledges';
 
 let baseURL = "http://localhost:4000";
 

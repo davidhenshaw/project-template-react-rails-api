@@ -55,7 +55,7 @@ function StartupPage(props)
                 <h3>Funding Goal: <p>{currencyUS.format(startup.goal)}</p></h3>
                 <h3>Amount Funded: <p>{currencyUS.format(funding)}</p></h3>
                 {/* <PledgeForm user={props.user} startup_id={id}/> */}
-                <UserPledges user={props.user} startup_id={id}/>
+                <UserPledges user={props.user} startup={startup}/>
             </div>
         </div>
     );

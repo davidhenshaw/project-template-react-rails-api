@@ -7,7 +7,7 @@ const InvestorCard = (props) => {
     const { id, name, email} = props.contact;
     return (
       <div className="item">
-        <img className="ui avatar image" src={user} alt="user" />
+        <img className="ui avatar image" src="" alt="user" />
         <div className="content">
           <Link
             to={{ pathname: `/contact/${id}`, state: { contact: props.contact } }}

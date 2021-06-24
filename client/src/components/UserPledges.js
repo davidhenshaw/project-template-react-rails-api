@@ -7,7 +7,7 @@ let currencyUS = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}
 
 function UserPledges(props)
 {
-    let { user, startup_id } = props;
+    let { user, startup } = props;
   const [pledges, setPledges] = useState([]);
 
   function handleDelete(toDelete_id)
@@ -37,8 +37,8 @@ function UserPledges(props)
           if(res.statusText == "OK"){
               let pledge_arr = res.data;
 
-              if(startup_id){
-                pledge_arr = res.data.filter( pledge => pledge.startup_id == props.startup_id);
+              if(startup){
+                pledge_arr = res.data.filter( pledge => pledge.startup_id == startup.id);
               }
               setPledges(pledge_arr.reverse());
           }
@@ -56,7 +56,12 @@ function UserPledges(props)
   }else
   return ( 
       <div>
-        <PledgeForm user={user} startup_id={startup_id} onPledge={handleNewPledge}/>
+          {
+              startup ? 
+              <PledgeForm user={user} startup_id={startup.id} onPledge={handleNewPledge}/>
+              :
+              null
+          }
         {pledges.map((pledge, idx) => <Pledge onDelete={handleDelete} pledge={pledge} key={idx} />)}
       </div>
     )
