@@ -5,6 +5,7 @@ import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import { Navbar } from './components/common';
 import { Header } from './components/common';
+import Profile from './components/Profile';
 
 
 import axios from 'axios';
@@ -80,17 +81,15 @@ function App() {
           <Route path="/signup">
             <SignupForm />
           </Route>
-          {/* <Route path="/login"> */}
-            {/* <LoginForm onLogin={handleLogin} /> */}
-          {/* </Route> */}
-          <Route path="/">
-            <User onLogout={handleLogout} user={user} />
+          <Route path="/me">
+            <Profile user={user} />
           </Route>
-        </Switch>
-        {/* <Route path="/Startup"> */}
-        <StartupContainer startups={startups} />
+          <Route exact path="/">
+            <User onLogout={handleLogout} user={user} />
+            <StartupContainer startups={startups} />
+          </Route>
+        </Switch> 
         {/* to add to your favorites (funded) list this.state.addPledged */}
-        {/* </Route> */}
         
     
       </div>

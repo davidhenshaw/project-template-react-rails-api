@@ -42,6 +42,8 @@ class StartupCard extends Component {
       </div>
       </div>
       </div>
+
+      // add filter
     );
   }
 
