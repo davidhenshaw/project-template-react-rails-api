@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import UserPledges from '../components/UserPledges'
 
 //Converts the numbers representing money to have dollar signs, commas, and decimal points
 let currencyUS = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
@@ -53,13 +54,13 @@ function StartupPage(props)
             <div className="startup-info">
                 <h3>Funding Goal: <p>{currencyUS.format(startup.goal)}</p></h3>
                 <h3>Amount Funded: <p>{currencyUS.format(funding)}</p></h3>
-                <PledgeForm user={props.user} startup_id={id}/>
+                {/* <PledgeForm user={props.user} startup_id={id}/> */}
+                <UserPledges user={props.user} startup_id={id}/>
             </div>
         </div>
     );
     
   }
-
 
   function PledgeForm(props)
   {
@@ -88,5 +89,4 @@ function StartupPage(props)
     )
   }
 
-  
   export default StartupPage;

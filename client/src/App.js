@@ -69,7 +69,7 @@ function App() {
     setUser(user);
   }
 
-  if (!user) return <LoginForm onLogin={setUser} />;
+  if (!user) return <LoginForm onLogin={handleLogin} />;
 
   return (
   <Router>

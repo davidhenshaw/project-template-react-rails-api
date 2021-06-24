@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   
+  resources :users, only: [:show] do
+    resources :pledges, only:[:index, :show]
+  end
 
-  resources :users, only: [:show, :index, :create, :destroy]
+  resources :users, only: [:index, :create, :destroy]
 
   resources :startups, only: [:index, :show]
 
-  resources :pledges, only: [:index, :create]
+  resources :pledges, only: [:index, :create, :destroy]
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
