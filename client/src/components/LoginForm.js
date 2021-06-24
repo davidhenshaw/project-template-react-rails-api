@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
+import Money from './video/money.mp4'
 
 let baseURL = "http://localhost:4000";
 
@@ -50,6 +51,20 @@ class LoginForm extends React.Component
         }
         else
         return <div className="form">
+            <video autoPlay loop muted
+                style={{
+                    position: "absolute",
+                    width: "100%",
+                    left: "50%",
+                    top: "50%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: "-1"
+                }}
+                >
+                    <source src={ Money } type="video/mp4" />
+                </video>
             <h3>Welcome, Guest!</h3>
             <h2>Log In</h2>
             <form onSubmit={this.handleSubmit}>

@@ -2,16 +2,17 @@ import React from 'react';
 import { Navbar } from '..'; 
 import './Header.css';
 import { Link } from "react-router-dom"
+import Logo from "./Logo.png"
 
 function Header () {
 
     return(
         <section className= "header" >
             <section className="header-top">
-                 {/*TOP SECTION  */}
                  <section className="header-top__logo">
-                     {/* logo */}
-                     <a href= "/" className="header-logo">LOGO</a>
+                 <img src= { Logo } alt="FullyFundedLogo" height="300" width="300" />                     
+                
+                 {/* <a href= "/" className="header-logo">LOGO</a> */}
                 </section>
                 <section className="header-top__navbar">
                         <section className="header-top__navigation">
