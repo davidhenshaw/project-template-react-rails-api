@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './StartupCard.css';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // this does not need to be a class component bc there is not state; it can literally be a functional component since only props is called 
 class StartupCard extends Component {
   
   startupArray = [ 
-    "https://image.shutterstock.com/image-vector/barn-icon-vintage-shed-logo-600w-1742137004.jpg"
+    "https://image.shutterstock.com/image-vector/barn-icon-vintage-shed-logo-600w-1742137004.jpg"    
   ]
 
     render() {
@@ -31,13 +31,13 @@ class StartupCard extends Component {
 
       <div className="btnn" >
                     {/* the below code line 45 relies on a pledge form */}
-      {/* <Link to=''>  */}
-          <button>
+      <Link to='/startup/1'> 
+          <button style={{marginTop:"10px"}}>
             <a>
               Make Pledge
             </a>
           </button>
-        {/* </Link> */}
+        </Link>
                 {/* the below code operates like a favorite to show if you have funded a startup or not */}
         <button style={{marginLeft: "10px", marginTop: "10px"}} onClick={()=>this.props.handleClick(this.props.startup)}>
         <a>Funded ⭐️ </a>

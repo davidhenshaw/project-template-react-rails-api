@@ -3,7 +3,9 @@
 	height: 200px;
 	justify-content: center;
 }
+.card-container{
 
+}
 .card-container:hover{
 	transform: scale(1.1);
 	box-shadow: 0px 0px 15px 0px;
@@ -14,7 +16,14 @@
 	margin-top: 0.5rem;
 }
 
-h4, p{
+h4, {
+	margin: 0;
+	padding: 0;
+	font-style: oblique;
+
+}
+
+p{
 	margin: 0;
 	padding: 0;
 }
@@ -30,7 +39,7 @@ justify-content: center;
 
 .btnn button{
 	padding: 0.5rem;
-	background-color:#1B9CFC;
+	background-color:#1bfc9e;
 	border: none;
 	transition: 0.2s;
 	margin-bottom: 0.5rem;
@@ -39,7 +48,7 @@ justify-content: center;
 }
 
 .btnn button:hover{
-	background: rgba(27, 156, 252, 0.1);
+	background: rgba(121, 206, 142, 0.1);
 }
 
 a{
@@ -56,15 +65,26 @@ a{
   }
   
   .startup-card{
-	box-shadow: 0px 0px 15px -5px;
+	/* box-shadow: 0px 0px 15px -5px;
+	transition: 0.3s;
+	animation: ease-in;
+	overflow: hidden;
+	width: 50vw;
+	height: auto;
+	margin: 12px;
+	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  } */
+  box-shadow: 0px 0px 15px -5px;
 	transition: 0.3s;
 	animation: ease-in;
 	border-radius: 5%;
 	overflow: hidden;
-	width: 15vw;
-	height: auto;
+	width: 50vw;
+	height: 35vw;
 	margin: 10px;
-	display: flex;
+	display: inline-block;
   	flex-wrap: wrap;
   	justify-content: center;
-  }
+}

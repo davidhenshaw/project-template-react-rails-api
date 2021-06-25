@@ -99,6 +99,7 @@ function App() {
         </Switch> 
         {/* to add to your favorites (funded) list this.state.addPledged */}
         
+        <div style={{ backgroundImage: "url(/logo.png)" }}></div>
     
       </div>
     </Router>
