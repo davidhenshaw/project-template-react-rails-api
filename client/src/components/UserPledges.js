@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import styled from 'styled-components';
 
 //Converts the numbers representing money to have dollar signs, commas, and decimal points
 let currencyUS = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
@@ -99,11 +100,19 @@ function PledgeForm(props)
         setAmount(0);
     }
 
+    const Button = styled.button`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid palevioletred;
+    color: palevioletred;
+    margin: 0 1em;
+    padding: 0.25em 1em;`
+
     return(
         <form onSubmit={(e) => submitPledge(e)}>
             <label>Pledge Amount:</label>
             <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
-            <button>Make a Pledge!</button>
+            <Button>Make a Pledge!</Button>
         </form>
     )
   }

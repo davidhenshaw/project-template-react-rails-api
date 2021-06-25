@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
 import Money from './video/money.mp4'
+import styled from 'styled-components';
 
 let baseURL = "http://localhost:4000";
 
@@ -76,10 +77,23 @@ class LoginForm extends React.Component
                     Password:
                     <input value={this.state.password} onChange={this.handleChange} type="password" name="password"/>
                 </label>
-                <button>Submit</button>
+                <Button>Submit</Button>
             </form>
         </div>
     }
+}
+
+function Button(props){
+
+    const Button = styled.button`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid palevioletred;
+    color: palevioletred;
+    margin: 0 1em;
+    padding: 0.25em 1em;`
+
+    return <Button>{props.children}</Button>
 }
 
 export default LoginForm;
