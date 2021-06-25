@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect} from "react-router-dom";
 import Money from './video/money.mp4';
 import styled from 'styled-components';
 
@@ -48,7 +47,7 @@ class LoginForm extends React.Component
     render(){
         if(this.state.loggedIn)
         {
-            return <Redirect to="/" />
+            return <redirect to="/" />
         }
         else
         return <div className="form"
@@ -73,8 +72,8 @@ class LoginForm extends React.Component
                 >
                     <source src={ Money } type="video/mp4" />
                 </video>
-            <h3>Welcome, Guest!</h3>
-            <h2>Log In</h2>
+            <h1>Welcome to Fully Funded!</h1>
+            <h2>The Startup Funding Marketplace</h2>
             <Form onSubmit={this.handleSubmit}>
                 <label>
                     Username:
@@ -84,7 +83,8 @@ class LoginForm extends React.Component
                     Password:
                     <input value={this.state.password} onChange={this.handleChange} type="password" name="password"/>
                 </label>
-                <Button>Submit</Button>
+                <Button>Submit</Button><br></br>
+                <a href="/signup">New Here? Sign Up!</a> 
             </Form>
         </div>
     }
@@ -113,6 +113,6 @@ function Form(props){
     width: 15%;
     text-align: center;`
 
-    return <Form>{props.children}</Form>
+    return <Form onSubmit={props.onSubmit}>{props.children}</Form>
 }
-export default LoginForm;
+export default LoginForm; 
