@@ -29,7 +29,7 @@
   .header-top__navbar {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
   }
   
   .header-top__seperator {

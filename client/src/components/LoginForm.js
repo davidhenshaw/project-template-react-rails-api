@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect} from "react-router-dom";
-import Money from './video/money.mp4'
+import Money from './video/money.mp4';
+import styled from 'styled-components';
 
 let baseURL = "http://localhost:4000";
 
@@ -47,10 +47,17 @@ class LoginForm extends React.Component
     render(){
         if(this.state.loggedIn)
         {
-            return <Redirect to="/" />
+            return <redirect to="/" />
         }
         else
-        return <div className="form">
+        return <div className="form"
+                style={{
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
             <video autoPlay loop muted
                 style={{
                     position: "absolute",
@@ -65,9 +72,9 @@ class LoginForm extends React.Component
                 >
                     <source src={ Money } type="video/mp4" />
                 </video>
-            <h3>Welcome, Guest!</h3>
-            <h2>Log In</h2>
-            <form onSubmit={this.handleSubmit}>
+            <h1>Welcome to Fully Funded!</h1>
+            <h2>The Startup Funding Marketplace</h2>
+            <Form onSubmit={this.handleSubmit}>
                 <label>
                     Username:
                     <input value={this.state.username} onChange={this.handleChange} type="text" name="username"/>
@@ -76,10 +83,36 @@ class LoginForm extends React.Component
                     Password:
                     <input value={this.state.password} onChange={this.handleChange} type="password" name="password"/>
                 </label>
-                <button>Submit</button>
-            </form>
+                <Button>Submit</Button><br></br>
+                <a href="/signup">New Here? Sign Up!</a> 
+            </Form>
         </div>
     }
 }
+function Button(props){
 
-export default LoginForm;
+    const Button = styled.button`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid green;
+    color: green;
+    margin: 0 1em;
+    padding: 0.25em 1em;`
+
+    return <Button>{props.children}</Button>
+}
+function Form(props){
+
+    const Form = styled.form`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid green;
+    color: green;
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    width: 15%;
+    text-align: center;`
+
+    return <Form onSubmit={props.onSubmit}>{props.children}</Form>
+}
+export default LoginForm; 
