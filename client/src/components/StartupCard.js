@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './StartupCard.css';
 import { Link } from 'react-router-dom'
 // this does not need to be a class component bc there is not state; it can literally be a functional component since only props is called 
+
+//Converts the numbers representing money to have dollar signs, commas, and decimal points
+let format = Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format;
+
 class StartupCard extends Component {
   
   startupArray = [ 
@@ -26,7 +30,7 @@ class StartupCard extends Component {
             {/* be able to sort by category */}
             <p><span style={{fontWeight: "bold"}}>Category: </span>{this.props.startup.category.name} </p>
             {/* be able to sort */}
-            <p><span style={{fontWeight: "bold"}}>Funding Goal: </span> {this.props.startup.goal}  </p>
+            <p><span style={{fontWeight: "bold"}}>Funding Goal: </span> {format(this.props.startup.goal)}  </p>
         </div>
 
       <div className="btnn" >
