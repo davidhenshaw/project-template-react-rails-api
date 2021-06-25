@@ -73,16 +73,16 @@ function App() {
     setUser(user);
   }
 
-  if (!user) return <LoginForm onLogin={handleLogin} />;
-
+  if (!user) return <LoginSignup onLogin={handleLogin} />
+  
   return (
-  <Router>
+    <Router>
       <div className="App">
       <Header />
         <Switch>
-          <Route path="/signup">
-            <SignupForm />
-          </Route>
+          {/* <Route path="/login-signup">
+            <LoginSignup onLogin={handleLogin} />
+          </Route> */}
 
           <Route 
             path="/startup/:id" 
@@ -109,39 +109,51 @@ function App() {
 function User(props)
 {
 
-  if(!props.user)
-    {
-      return <Redirect to="/login" />;
-    }
-  else
+  // if(!props.user)
+  //   {
+  //     return <Redirect to="/login" />;
+  //   }
+  // else
   return <div>
           <h3>Welcome, {props.user.username}!</h3>
           <button onClick={props.onLogout}>Log Out</button>
         </div>
 }
 
+function LoginSignup(props)
+{
+  let { onLogin, loginView: isLoginView } = props
+  const [isLogin, setIsLogin] = useState(isLoginView);
 
-// function App() {
-//   // return <SignupForm />
-//   return (
-//     <div className= "App">
-//       <Header />
-//     </div> 
-//   );
-// }
+  const toggle = () => {
+    setIsLogin(!isLogin);
+  }
 
-// function ReactPlaceholder()
-// {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           <Header />
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
+  return(
+    <div>
+        
+      {isLogin ? 
+      <SignupForm />
+      :
+      <LoginForm onLogin={onLogin} />
+      }
+
+      <div style={{
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+        {
+          isLogin ?
+          <button onClick={toggle}>New Here? Sign Up!</button> 
+          :
+          <button onClick={toggle}>Already have an account? Log In Here!</button> 
+        }
+      </div>
+    </div>
+  )
+}
 
 export default App;

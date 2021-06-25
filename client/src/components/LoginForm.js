@@ -86,11 +86,12 @@ class LoginForm extends React.Component
                     <input value={this.state.password} onChange={this.handleChange} type="password" name="password"/>
                 </label>
                 <Button>Submit</Button><br></br>
-                <a href="/signup">New Here? Sign Up!</a> 
+                
             </Form>
         </div>
     }
 }
+
 function Button(props){
 
     const Button = styled.button`
@@ -103,6 +104,7 @@ function Button(props){
 
     return <Button>{props.children}</Button>
 }
+
 function Form(props){
 
     const Form = styled.form`

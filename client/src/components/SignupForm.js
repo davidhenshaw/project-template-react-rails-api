@@ -42,7 +42,14 @@ class SignupForm extends React.Component
     }
 
     render(){
-        return <div className="form">
+        return <div className="form" 
+                    style={{
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
             <h2>Sign Up!</h2>
             <form onSubmit={this.handleSubmit}>
                 <label>
