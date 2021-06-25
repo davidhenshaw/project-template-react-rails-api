@@ -10,9 +10,9 @@ function Header () {
         <section className= "header" >
             <section className="header-top">
                  <section className="header-top__logo">
-                 <img src= { Logo } alt="FullyFundedLogo" height="300" width="300" />                     
+                 {/* <img src= { Logo } alt="FullyFundedLogo" height="200" width="200" />                      */}
                 
-                 {/* <a href= "/" className="header-logo">LOGO</a> */}
+                 <a href= "/" className="header-logo">FULLY+FUNDED</a>
                 </section>
                 <section className="header-top__navbar">
                         <section className="header-top__navigation">
