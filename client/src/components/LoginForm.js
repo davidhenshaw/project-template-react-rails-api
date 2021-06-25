@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Money from './video/money.mp4';
+import {Redirect} from "react-router-dom";
+import Money from './video/money.mp4'
 import styled from 'styled-components';
 
 let baseURL = "http://localhost:4000";
