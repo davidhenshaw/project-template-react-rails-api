@@ -76,6 +76,7 @@ class LoginForm extends React.Component
             <h1>Welcome to Fully Funded!</h1>
             <h2>The Startup Funding Marketplace</h2>
             <Form onSubmit={this.handleSubmit}>
+                <h2>Log In:</h2>
                 <label>
                     Username:
                     <input value={this.state.username} onChange={this.handleChange} type="text" name="username"/>
